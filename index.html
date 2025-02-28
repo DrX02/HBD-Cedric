@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux Anniversaire Cédric</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.3/dist/confetti.browser.min.js"></script>
+    <style>
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        .animate-wiggle {
+            animation: wiggle 0.2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-purple-500 to-pink-500 min-h-screen flex items-center justify-center text-white p-4">
+    <div class="text-center p-6 max-w-2xl mx-auto bg-white/20 backdrop-filter backdrop-blur-md backdrop-filter-none rounded-2xl shadow-xl border border-white/30">
+        <img src="./assets/img/Cedric.jpg" alt="Cédric" class="w-32 h-32 mx-auto rounded-full shadow-lg border-4 border-white/50">
+        <h1 class="text-3xl md:text-4xl font-bold animate-bounce">🎉 Joyeux Anniversaire Cédric ! 🎂</h1>
+        <p class="mt-4 text-base md:text-lg font-light">Aujourd'hui est un jour spécial, un jour où une personne extraordinaire est née. Que cette année t'apporte bonheur, succès et amour !</p>
+        <p class="mt-2 text-base md:text-lg font-light">Continue d'illuminer le monde avec ton sourire et ta gentillesse. Tu es une personne précieuse et je suis ravi de célébrer cette journée avec toi !</p>
+        <div class="mt-6">
+            <button onclick="showSurprise()" class="px-6 py-3 bg-yellow-400 text-purple-900 font-bold rounded-full shadow-md hover:bg-yellow-500 transition duration-300 animate-pulse animate-wiggle">
+                🎁 Clique ici pour une surprise
+            </button>
+        </div>
+    </div>
+    
+    
+    <footer class="absolute bottom-5 text-center w-full text-white text-sm opacity-80">
+        Créé par Leonel TERRY 😎✨
+    </footer>
+    
+    <script>
+        function showSurprise() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            Swal.fire({
+                title: "🎊 Cédric, cette journée est la tienne ! 🎂",
+                html: `
+                    <div id="slider" style="position: relative; width: 100%; height: 350px; overflow: hidden; bordre-radius: 10px;">
+                        <img src="./assets/img/IMG-20250228-WA0058.jpg" class="slide active" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="./assets/img/IMG-20250228-WA0057.jpg" class="slide" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                        <img src="./assets/img/IMG-20250228-WA0056.jpg" class="slide" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                        <img src="./assets/img/IMG-20250228-WA0059.jpg" class="slide" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                        <img src="./assets/img/IMG-20250228-WA0060.jpg" class="slide" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                        <img src="./assets/img/IMG-20250228-WA0061.jpg" class="slide" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                        <img src="./assets/img/IMG-20250228-WA0062.jpg" class="slide" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                        <img src="./assets/img/IMG-20250228-WA0063.jpg" class="slide" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                        <img src="./assets/img/IMG-20250228-WA0064.jpg" class="slide" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                        <img src="./assets/img/IMG-20250228-WA0065.jpg" class="slide" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                    </div>
+                    <div>
+                    <p>Que cette année soit remplie de bonheur, de réussite et de belles surprises ! 🎁✨</p>
+                    </div>
+                `,
+                width: 600,
+                padding: "3em",
+                color: "#fff",
+                background: "#ff69b4 url('/images/balloons.gif')",
+                backdrop: `
+                    rgba(0,0,123,0.4)
+                    url("/images/fireworks.gif")
+                    center
+                    no-repeat
+                `,
+                didOpen: () => {
+                    let slides = document.querySelectorAll(".slide");
+                    let currentIndex = 0;
+                    setInterval(() => {
+                        slides[currentIndex].style.display = "none";
+                        currentIndex = (currentIndex + 1) % slides.length;
+                        slides[currentIndex].style.display = "block";
+                    }, 3000);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
